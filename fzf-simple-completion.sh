@@ -4,7 +4,6 @@
 # More details at https://github.com/duong-db/fzf-simple-completion
 
 bind '"\e[0n": redraw-current-line' 
-export FZF_DEFAULT_OPTS="--bind=tab:down --bind=btab:up --cycle"
 
 _fzf_command_completion() {
     [[ -z "${COMP_LINE// /}" || $COMP_POINT -ne ${#COMP_LINE} ]] && return
@@ -40,7 +39,7 @@ _fzf_get_argument_list() {
 
 _fzf_argument_completion() {
     [[ $COMP_POINT -ne ${#COMP_LINE} ]] && return
-    local fzf_opts="--ansi --reverse --height 12 --select-1 --exit-0"
+    local fzf_opts="--bind=tab:down --bind=btab:up --cycle --ansi --reverse --height 12 --select-1 --exit-0"
 
     # Hack on directories completion
     # - Only display the last sub directory for fzf searching
